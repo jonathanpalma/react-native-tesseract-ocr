@@ -37,7 +37,8 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
   	```
       compile project(':react-native-tesseract-ocr')
   	```
-
+4. [Trained data files](https://github.com/tesseract-ocr/tessdata) for a language must be 
+extracted in `android/app/src/main/assets/tessdata`.
 
 ## Usage *(expectations, but not ready yet)*
 ```javascript

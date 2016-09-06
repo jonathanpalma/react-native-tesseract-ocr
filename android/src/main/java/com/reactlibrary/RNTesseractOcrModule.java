@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.util.Log;
 
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -60,9 +61,9 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void startOcr(String path, String lang) {
+  public void startOcr(String path, String lang, Promise promise) {
     Log.d(REACT_CLASS, "Start ocr images");
-
+    
     try{
       BitmapFactory.Options options = new BitmapFactory.Options();
       options.inSampleSize = 4; //inSampleSize documentation --> http://goo.gl/KRrlvi
@@ -70,8 +71,11 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
 
       result = extractText(bitmap, lang);
 
+      promise.resolve(result);
+
     } catch(Exception e){
       Log.e(REACT_CLASS, e.getMessage());
+      promise.reject("An error occurred", e.getMessage());
     }
   }
 

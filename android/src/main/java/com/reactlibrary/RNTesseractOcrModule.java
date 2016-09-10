@@ -69,7 +69,7 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
       options.inSampleSize = 4; //inSampleSize documentation --> http://goo.gl/KRrlvi
       Bitmap bitmap = BitmapFactory.decodeFile(path, options);
 
-      result = extractText(bitmap, lang);
+      String result = extractText(bitmap, lang);
 
       promise.resolve(result);
 

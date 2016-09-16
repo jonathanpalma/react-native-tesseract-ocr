@@ -2,7 +2,7 @@
 {
   "name": "react-native-tesseract-ocr",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tesseract OCR wrapper for React Native",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +10,8 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "author": "Jonathan Palma <tanpalma04@gmail.com>",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.29.0"
   }

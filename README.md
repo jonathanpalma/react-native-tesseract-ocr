@@ -5,7 +5,7 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
   - [tess-two](https://github.com/rmtheis/tess-two) for Android
   - [Tesseract-OCR-iOS](https://github.com/gali8/Tesseract-OCR-iOS) for iOS
 
-## Getting started *(expectations, but not ready yet)*
+## Getting started
 
 `$ npm install react-native-tesseract-ocr --save` 
 
@@ -40,7 +40,7 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
 4. [Trained data files](https://github.com/tesseract-ocr/tessdata) for a language must be 
 extracted in `android/app/src/main/assets/tessdata`.
 
-## Usage *(expectations, but not ready yet)*
+## Usage
 ```javascript
 import RNTesseractOcr from 'react-native-tesseract-ocr';
 

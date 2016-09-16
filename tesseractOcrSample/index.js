@@ -6,6 +6,7 @@
 import React, { Component } from 'react';
 import { Image, Platform, PixelRatio, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import RNTesseractOcr from 'react-native-tesseract-ocr';
 
 var Button = (Platform.OS === 'android') ? TouchableNativeFeedback : TouchableOpacity;
 
@@ -47,6 +48,16 @@ export default class App extends React.Component {
         }
 
         this.setState({ imgSource: source });
+        
+        RNTesseractOcr.startOcr(response.path, "LANG_ENGLISH")
+          .then((result) => {
+            this.setState({ ocrResult: result });
+            console.log("OCR Result: ", result);
+          })
+          .catch((err) => {
+            console.log("OCR Error: ", err);
+          })
+          .done();
       }
     });
   }

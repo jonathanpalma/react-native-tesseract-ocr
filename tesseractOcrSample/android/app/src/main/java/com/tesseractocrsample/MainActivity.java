@@ -1,8 +1,6 @@
 package com.tesseractocrsample;
 
 import com.facebook.react.ReactActivity;
-import com.reactlibrary.RNTesseractOcrPackage;
-import com.imagepicker.ImagePickerPackage;
 
 public class MainActivity extends ReactActivity {
 

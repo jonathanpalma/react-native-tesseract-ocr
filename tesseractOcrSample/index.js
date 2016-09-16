@@ -73,7 +73,7 @@ export default class App extends React.Component {
           </View>
         </Button>
 
-        <Text>{this.state.ocrResult}</Text>
+        <Text>OCR Result: {this.state.ocrResult}</Text>
       </View>
     );
   }

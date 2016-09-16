@@ -15,6 +15,11 @@ import com.facebook.react.common.annotations.VisibleForTesting;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +31,7 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
   @VisibleForTesting
   private static final String REACT_CLASS = "RNTesseractOcr"; 
   
-  private static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/" + REACT_CLASS + "/";
+  private static String DATA_PATH = Environment.getExternalStorageDirectory().toString() + File.separator;
   private static final String TESSDATA = "tessdata";
 
   private static final String LANG_GERMAN = "deu";
@@ -40,6 +45,7 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
   public RNTesseractOcrModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
+    this.DATA_PATH += reactContext.getPackageName() + File.separator;
   }
 
   @Override
@@ -62,6 +68,8 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void startOcr(String path, String lang, Promise promise) {
+    prepareTesseract();
+
     Log.d(REACT_CLASS, "Start ocr images");
     
     try{
@@ -70,7 +78,7 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
       Bitmap bitmap = BitmapFactory.decodeFile(path, options);
 
       String result = extractText(bitmap, lang);
-
+      
       promise.resolve(result);
 
     } catch(Exception e){
@@ -86,7 +94,7 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
     } catch (Exception e) {
       Log.e(REACT_CLASS, e.getMessage());
       if (tessBaseApi == null) {
-        Log.e(REACT_CLASS, "TessBaseAPI is null. TessFactory not returning tess object.");
+        Log.e(REACT_CLASS, "TessBaseAPI is null. TessFactory is not returning tess object.");
       }
     }
 
@@ -116,5 +124,58 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
     tessBaseApi.end();
 
     return extractedText;
+  }
+
+  private void prepareDirectory(String path) {
+    File dir = new File(path);
+    if (!dir.exists()) {
+      if (!dir.mkdirs()) {
+        Log.e(REACT_CLASS, "ERROR: Creation of directory " + path + " failed, check permission to write to external storage.");
+      }
+    } else {
+      Log.i(REACT_CLASS, "Created directory " + path);
+    }
+  }
+
+  private void prepareTesseract() {
+    Log.d(REACT_CLASS, "Preparing tesseract enviroment");
+
+    try {
+      prepareDirectory(DATA_PATH + TESSDATA);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    copyTessDataFiles(TESSDATA);
+  }
+
+  private void copyTessDataFiles(String path) {
+    try {
+      String fileList[] = reactContext.getAssets().list(path);
+
+      for (String fileName : fileList) {
+
+        String pathToDataFile = DATA_PATH + path + "/" + fileName;
+        if (!(new File(pathToDataFile)).exists()) {
+
+          InputStream in = reactContext.getAssets().open(path + "/" + fileName);
+
+          OutputStream out = new FileOutputStream(pathToDataFile);
+
+          byte[] buf = new byte[1024];
+          int len;
+
+          while ((len = in.read(buf)) > 0) {
+            out.write(buf, 0, len);
+          }
+          in.close();
+          out.close();
+
+          Log.d(REACT_CLASS, "Copied " + fileName + "to tessdata");
+        }
+      }
+    } catch (IOException e) {
+      Log.e(REACT_CLASS, "Unable to copy files to tessdata " + e.toString());
+    }
   }
 }

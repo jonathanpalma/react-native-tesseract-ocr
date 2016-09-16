@@ -44,8 +44,24 @@ extracted in `android/app/src/main/assets/tessdata`.
 ```javascript
 import RNTesseractOcr from 'react-native-tesseract-ocr';
 
-// TODO: What do with the module?
-RNTesseractOcr;
+.
+.
+.
+
+/**
+ * @param {string} imgPath - The path of the image.
+ * @param {string} lang - The language you want to process.
+ */
+RNTesseractOcr.startOcr(imgPath, lang)
+  .then((result) => {
+    this.setState({ ocrResult: result });
+    console.log("OCR Result: ", result);
+  })
+  .catch((err) => {
+    console.log("OCR Error: ", err);
+  })
+  .done();
+
 ```
 
 # Contribution

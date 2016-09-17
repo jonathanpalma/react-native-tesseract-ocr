@@ -1,16 +1,26 @@
 
 {
   "name": "react-native-tesseract-ocr",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Tesseract OCR wrapper for React Native",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "tesseract ocr",
+    "optical character recognition",
+    "cognitive services"
   ],
-  "author": "Jonathan Palma <tanpalma04@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jonathanpalma/react-native-tesseract-ocr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonathanpalma/react-native-tesseract-ocr/issues"
+  },
+  "author": "Jonathan Palma <tanpalma04@gmail.com> (https://github.com/jonathanpalma)",
   "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.29.0"

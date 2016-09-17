@@ -1,5 +1,4 @@
 # react-native-tesseract-ocr
-**_This repository is not ready yet, but we are working hard to get a first stable version, if you want to contribute you are welcome_** 
 
 react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https://github.com/tesseract-ocr) using base on
   - [tess-two](https://github.com/rmtheis/tess-two) for Android
@@ -12,6 +11,8 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
 ### Mostly automatic installation
 
 `$ react-native link react-native-tesseract-ocr`
+
+*Don't forget to add [trained data files](https://github.com/tesseract-ocr/tessdata) to the appropriate folder*
 
 ### Manual installation
 
@@ -64,10 +65,29 @@ RNTesseractOcr.startOcr(imgPath, lang)
 
 ```
 
-# Contribution
+### Supported languages
+  - LANG_GERMAN
+  - LANG_ENGLISH
+  - LANG_FRENCH
+  - LANG_ITALIAN
+  - LANG_PORTUGUESE
+  - LANG_SPANISH
+  - LANG_SWEDISH
+
+
+## Example 
+Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-native-tesseract-ocr/tree/master/tesseractOcrSample):
+- `git clone git@github.com:jonathanpalma/react-native-tesseract-ocr.git`
+- `cd react-native-tesseract-ocr/tesseractOcrSample/`
+- `npm install` 
+
+## TODOS
+- [ ] **Add iOS support**
+
+## Contribution
 Contributions are welcome :raised_hands:
 
-# License
+## License
 This repository is distributed under [MIT license](https://github.com/jonathanpalma/react-native-tesseract-ocr/blob/master/LICENSE) 
  - [Tesseract OCR](https://github.com/tesseract-ocr) - maintained by Google, is distributed under [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0)
  - [tess-two](https://github.com/rmtheis/tess-two) is distributed under [Apache 2.0 license](https://github.com/rmtheis/tess-two/blob/master/COPYING)

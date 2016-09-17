@@ -1,0 +1,19 @@
+.*.swp
+._*
+.DS_Store
+.git
+.hg
+.npmrc
+.lock-wscript
+.svn
+.wafpickle-*
+config.gypi
+CVS
+npm-debug.log
+
+# Dependency directories
+node_modules
+jspm_packages
+
+# Sample
+tesseractOcrSample

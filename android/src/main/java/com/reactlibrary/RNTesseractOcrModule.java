@@ -74,7 +74,12 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
     
     try{
       BitmapFactory.Options options = new BitmapFactory.Options();
-      options.inSampleSize = 4; //inSampleSize documentation --> http://goo.gl/KRrlvi
+
+      // TODO: 
+      // Check image size before use inSampleSize (maybe this could help) --> https://goo.gl/4MvBvB
+      // considering that when inSampleSize is used (usually to save memory) the ocr quality decreases 
+
+      //options.inSampleSize = 4; //inSampleSize documentation --> http://goo.gl/KRrlvi
       Bitmap bitmap = BitmapFactory.decodeFile(path, options);
 
       String result = extractText(bitmap, lang);

@@ -21,8 +21,5 @@
     "url": "https://github.com/jonathanpalma/react-native-tesseract-ocr/issues"
   },
   "author": "Jonathan Palma <tanpalma04@gmail.com> (https://github.com/jonathanpalma)",
-  "license": "MIT",
-  "peerDependencies": {
-    "react-native": "^0.29.0"
-  }
+  "license": "MIT"
 }

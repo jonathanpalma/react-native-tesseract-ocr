@@ -2,7 +2,7 @@
 
 react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https://github.com/tesseract-ocr) using base on
   - [tess-two](https://github.com/rmtheis/tess-two) for Android
-  - [Tesseract-OCR-iOS](https://github.com/gali8/Tesseract-OCR-iOS) for iOS
+  - [Tesseract-OCR-iOS](https://github.com/gali8/Tesseract-OCR-iOS) for iOS *(Not implemented yet)*
 
 ## Getting started
 
@@ -45,9 +45,6 @@ extracted in `android/app/src/main/assets/tessdata`.
 ```javascript
 import RNTesseractOcr from 'react-native-tesseract-ocr';
 
-.
-.
-.
 
 /**
  * @param {string} imgPath - The path of the image.
@@ -80,6 +77,8 @@ Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-nat
 - `git clone git@github.com:jonathanpalma/react-native-tesseract-ocr.git`
 - `cd react-native-tesseract-ocr/tesseractOcrSample/`
 - `npm install` 
+
+*NOTE: Don't forget to add [trained data files](https://github.com/tesseract-ocr/tessdata) to the appropriate folder*
 
 ## TODOS
 - [ ] **Add iOS support**

@@ -82,6 +82,8 @@ Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-nat
 
 ## TODOS
 - [ ] **Add iOS support**
+- [ ] Add support for more languages
+- [ ] Optimize ocr for large images
 
 ## Contribution
 Contributions are welcome :raised_hands:

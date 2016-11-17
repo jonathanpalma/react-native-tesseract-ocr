@@ -63,13 +63,46 @@ RNTesseractOcr.startOcr(imgPath, lang)
 ```
 
 ### Supported languages
-  - LANG_GERMAN
+  - LANG_AFRIKAANS
+  - LANG_AMHARIC
+  - LANG_ARABIC
+  - LANG_ASSAMESE
+  - LANG_AZERBAIJANI
+  - LANG_BELARUSIAN
+  - LANG_BOSNIAN
+  - LANG_BULGARIAN
+  - LANG_CHINESE_SIMPLIFIED
+  - LANG_CHINESE_TRADITIONAL
+  - LANG_CROATIAN
+  - LANG_DANISH
   - LANG_ENGLISH
+  - LANG_ESTONIAN
   - LANG_FRENCH
+  - LANG_GALICIAN
+  - LANG_GERMAN
+  - LANG_HEBREW
+  - LANG_HUNGARIAN
+  - LANG_ICELANDIC
+  - LANG_INDONESIAN
+  - LANG_IRISH
   - LANG_ITALIAN
+  - LANG_JAPANESE
+  - LANG_KOREAN
+  - LANG_LATIN
+  - LANG_LITHUANIAN
+  - LANG_NEPALI
+  - LANG_NORWEGIAN
+  - LANG_PERSIAN
+  - LANG_POLISH
   - LANG_PORTUGUESE
+  - LANG_RUSSIAN
+  - LANG_SERBIAN
+  - LANG_SLOVAK
   - LANG_SPANISH
   - LANG_SWEDISH
+  - LANG_TURKISH
+  - LANG_UKRAINIAN
+  - LANG_VIETNAMESE
 
 
 ## Example 
@@ -82,7 +115,6 @@ Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-nat
 
 ## TODOS
 - [ ] **Add iOS support**
-- [ ] Add support for more languages
 - [ ] Optimize ocr for large images
 
 ## Contribution

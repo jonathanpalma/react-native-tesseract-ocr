@@ -12,7 +12,13 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
 
 `$ react-native link react-native-tesseract-ocr`
 
-*Don't forget to add [trained data files](https://github.com/tesseract-ocr/tessdata) to the appropriate folder*
+*Don't forget to ...*
+- *add [trained data files](https://github.com/tesseract-ocr/tessdata) to the appropriate folder*
+- *install [CocoaPods](https://cocoapods.org/) in your react-native project and add the following line to your Podfile then run `pod install` __(iOS only)__*
+   ```
+   pod 'TesseractOCRiOS', '4.0.0'
+   ```
+
 
 ### Manual installation
 
@@ -111,8 +117,12 @@ Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-nat
 - `cd react-native-tesseract-ocr/tesseractOcrSample/`
 - `npm install` 
 
-*NOTE: Don't forget to add [trained data files](https://github.com/tesseract-ocr/tessdata) to the appropriate folder*
-
+*NOTE: Don't forget to ...*
+- *add [trained data files](https://github.com/tesseract-ocr/tessdata) to the appropriate folder*
+- *install [CocoaPods](https://cocoapods.org/) in your react-native project and add the following line to your Podfile then run `pod install` __(iOS only)__*
+   ```
+   pod 'TesseractOCRiOS', '4.0.0'
+   ```
 ## TODOS
 - [ ] **Add iOS support**
 - [ ] Optimize ocr for large images
@@ -125,3 +135,4 @@ This repository is distributed under [MIT license](https://github.com/jonathanpa
  - [Tesseract OCR](https://github.com/tesseract-ocr) - maintained by Google, is distributed under [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0)
  - [tess-two](https://github.com/rmtheis/tess-two) is distributed under [Apache 2.0 license](https://github.com/rmtheis/tess-two/blob/master/COPYING)
  - [Tesseract-OCR-iOS](https://github.com/gali8/Tesseract-OCR-iOS) is distributed under [MIT license](https://github.com/gali8/Tesseract-OCR-iOS/blob/master/LICENSE.md)
+ 

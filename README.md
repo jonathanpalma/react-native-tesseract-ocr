@@ -13,7 +13,7 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
 `$ react-native link react-native-tesseract-ocr`
 
 *Don't forget to ...*
-- *add [trained data files](https://github.com/tesseract-ocr/tessdata) to the appropriate folder*
+- *add [v3.04 trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) to the appropriate folder*
 - *install [CocoaPods](https://cocoapods.org/) in your react-native project and add the following line to your Podfile then run `pod install` __(iOS only)__*
    ```
    pod 'TesseractOCRiOS', '4.0.0'
@@ -44,7 +44,7 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
   	```
       compile project(':react-native-tesseract-ocr')
   	```
-4. [Trained data files](https://github.com/tesseract-ocr/tessdata) for a language must be 
+4. [v3.04 Trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) for a language must be 
 extracted in `android/app/src/main/assets/tessdata`.
 
 ## Usage
@@ -118,7 +118,7 @@ Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-nat
 - `npm install` 
 
 *NOTE: Don't forget to ...*
-- *add [trained data files](https://github.com/tesseract-ocr/tessdata) to the appropriate folder*
+- *add [v3.04 trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) to the appropriate folder*
 - *install [CocoaPods](https://cocoapods.org/) in your react-native project and add the following line to your Podfile then run `pod install` __(iOS only)__*
    ```
    pod 'TesseractOCRiOS', '4.0.0'

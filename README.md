@@ -123,6 +123,7 @@ Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-nat
    ```
    pod 'TesseractOCRiOS', '4.0.0'
    ```
+
 ## TODOS
 - [ ] **Add iOS support**
 - [ ] Optimize ocr for large images

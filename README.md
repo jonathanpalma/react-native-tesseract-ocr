@@ -110,6 +110,9 @@ RNTesseractOcr.startOcr(imgPath, lang)
   - LANG_UKRAINIAN
   - LANG_VIETNAMESE
 
+### If you want to use your own trained data file
+- Extract your own trained data file into `android/app/src/main/assets/tessdata` and rename it as `custom.traineddata`.
+
 
 ## Example 
 Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-native-tesseract-ocr/tree/master/tesseractOcrSample):

@@ -21,6 +21,6 @@ android {
 
 dependencies {
     compile 'com.facebook.react:react-native:0.20.+'
-    compile 'com.rmtheis:tess-two:6.0.4'
+    compile 'com.rmtheis:tess-two:6.2.0'
 }
   

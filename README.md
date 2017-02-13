@@ -111,7 +111,9 @@ RNTesseractOcr.startOcr(imgPath, lang)
   - LANG_VIETNAMESE
 
 ### If you want to use your own trained data file
-- Extract your own trained data file into `android/app/src/main/assets/tessdata` and rename it as `custom.traineddata`.
+  - LANG_CUSTOM
+ 
+ *Locate your own trained data file as `custom.traineddata` into `android/app/src/main/assets/tessdata`.*
 
 
 ## Example 

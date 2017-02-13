@@ -45,6 +45,7 @@
     private static final String LANG_CHINESE_SIMPLIFIED = "chi_sim";
     private static final String LANG_CHINESE_TRADITIONAL = "chi_tra";
     private static final String LANG_CROATIAN = "hrv";
+    private static final String LANG_CUSTOM = "custom";
     private static final String LANG_DANISH = "dan";
     private static final String LANG_ENGLISH = "eng";
     private static final String LANG_ESTONIAN = "est";
@@ -100,6 +101,7 @@
       constants.put("LANG_CHINESE_SIMPLIFIED", LANG_CHINESE_SIMPLIFIED);
       constants.put("LANG_CHINESE_TRADITIONAL", LANG_CHINESE_TRADITIONAL);
       constants.put("LANG_CROATIAN", LANG_CROATIAN);
+      constants.put("LANG_CUSTOM", LANG_CUSTOM);
       constants.put("LANG_DANISH", LANG_DANISH);
       constants.put("LANG_ENGLISH", LANG_ENGLISH);
       constants.put("LANG_ESTONIAN", LANG_ESTONIAN);

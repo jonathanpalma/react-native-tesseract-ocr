@@ -1,4 +1,4 @@
-# react-native-tesseract-ocr
+# react-native-tesseract-ocr [![npm version](https://badge.fury.io/js/react-native-tesseract-ocr.svg)](https://badge.fury.io/js/react-native-tesseract-ocr)
 
 react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https://github.com/tesseract-ocr) using base on
   - [tess-two](https://github.com/rmtheis/tess-two) for Android

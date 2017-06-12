@@ -130,8 +130,7 @@ Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-nat
    ```
 
 ## TODOS
-- [ ] **Add iOS support**
-- [ ] Optimize ocr for large images
+Check the [project boards](https://github.com/jonathanpalma/react-native-tesseract-ocr/projects)
 
 ## Contribution
 Contributions are welcome :raised_hands:

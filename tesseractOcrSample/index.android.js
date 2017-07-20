@@ -1,10 +1,9 @@
 /**
- * Sample React Native Tesseract Ocr App
+ * Sample React Native Tesseract OCR App
  * @author Jonathan Palma <tanpalma04@gmail.com>
+ * @flow
  */
-import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry } from 'react-native';
 import App from './index.js';
-
 
 AppRegistry.registerComponent('tesseractOcrSample', () => App);

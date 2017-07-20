@@ -1,9 +1,11 @@
 /**
  * Sample React Native App
- * https://github.com/facebook/react-native
+ * https://github.com/jonathanpalma/react-native-tesseract-ocr
+ * @author  Jonathan Palma <tanpalma04@gmail.com>
  * @flow
  */
 
+'use strict';
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -12,7 +14,7 @@ import {
   View
 } from 'react-native';
 
-class tesseractOcrSample extends Component {
+export default class tesseractOcrSample extends Component {
   render() {
     return (
       <View style={styles.container}>

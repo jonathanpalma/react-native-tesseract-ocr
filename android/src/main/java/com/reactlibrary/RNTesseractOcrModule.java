@@ -81,7 +81,8 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
 	public RNTesseractOcrModule(ReactApplicationContext reactContext) {
 		super(reactContext);
 		this.reactContext = reactContext;
-		this.DATA_PATH += reactContext.getPackageName() + File.separator;
+		if (!this.DATA_PATH.contains(reactContext.getPackageName()))
+			this.DATA_PATH += reactContext.getPackageName() + File.separator;
 	}
 
 	@Override

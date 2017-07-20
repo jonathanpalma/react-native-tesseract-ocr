@@ -138,6 +138,17 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
 		return constants;
 	}
 
+	@ReactMethod
+	public void stop(Promise promise) {
+		try {
+			tessBaseApi.stop();
+			promise.resolve("Recognition was canceled");
+		} catch (Exception e) {
+			Log.e(REACT_CLASS, e.toString());
+			promise.reject("An error occurred", e.getMessage());
+		}
+	}
+
 	@Deprecated
 	@ReactMethod
 	public void startOcr(String path, String lang, Promise promise) {

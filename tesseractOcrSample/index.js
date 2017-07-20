@@ -59,6 +59,17 @@ class App extends Component {
       .done();
   }
 
+  cancelOcr() {
+    RNTesseractOcr.stop()
+      .then((result) => {
+        console.log('OCR Cancellation Result: ', result);
+      })
+      .catch((err) => {
+        console.log('OCR Cancellation Error: ', err);
+      })
+      .done();
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -81,6 +92,12 @@ class App extends Component {
           null
         }
         <Text>{this.state.ocrResult}</Text>
+
+        <Button onPress={() => { this.cancelOcr(); }} >
+          <View style={[styles.img]}>
+            <Text>Cancel recognition</Text>
+          </View>
+        </Button>
       </View>
     );
   }

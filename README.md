@@ -73,7 +73,7 @@ RNTesseractOcr.recognize(imgPath, lang, tessOptions)
 
 ```
 
-*NOTE: The method _startOcr_ is deprecated. Instead, use _recognize_ *
+*NOTE: The method _startOcr_ is deprecated. Instead, use _recognize_*
 
 
 ### Supported languages

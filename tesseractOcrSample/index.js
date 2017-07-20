@@ -27,6 +27,10 @@ const options = {
     skipBackup: true
   }
 };
+const tessOptions = {
+  whitelist: null,
+  blacklist: '1234567890\'!"#$%&/()={}[]+*-_:;<>'
+};
 
 class App extends Component {
   state = { isLoading: false, imgSource: null, ocrResult: null };
@@ -44,7 +48,7 @@ class App extends Component {
   }
 
   doOcr(path) {
-    RNTesseractOcr.startOcr(path, 'LANG_ENGLISH')
+    RNTesseractOcr.recognize(path, 'LANG_ENGLISH', tessOptions)
       .then((result) => {
         this.setState({ isLoading: false, ocrResult: result });
         console.log('OCR Result: ', result);

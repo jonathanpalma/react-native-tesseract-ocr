@@ -8,6 +8,10 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
 
 `$ npm install react-native-tesseract-ocr --save` 
 
+or
+
+`$ yarn add react-native-tesseract-ocr` 
+
 ### Mostly automatic installation
 
 `$ react-native link react-native-tesseract-ocr`
@@ -128,7 +132,7 @@ RNTesseractOcr.recognize(imgPath, lang, tessOptions)
 Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-native-tesseract-ocr/tree/master/tesseractOcrSample):
 - `git clone git@github.com:jonathanpalma/react-native-tesseract-ocr.git`
 - `cd react-native-tesseract-ocr/tesseractOcrSample/`
-- `npm install` 
+- `npm install` or `yarn`
 
 *NOTE: Don't forget to ...*
 - *add [v3.04 trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) to the appropriate folder*

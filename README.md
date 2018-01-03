@@ -8,6 +8,10 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
 
 `$ npm install react-native-tesseract-ocr --save` 
 
+or
+
+`$ yarn add react-native-tesseract-ocr` 
+
 ### Mostly automatic installation
 
 `$ react-native link react-native-tesseract-ocr`
@@ -55,8 +59,13 @@ import RNTesseractOcr from 'react-native-tesseract-ocr';
 /**
  * @param {string} imgPath - The path of the image.
  * @param {string} lang - The language you want to process.
+ * @param {object} tessOptions - Tesseract options.
  */
-RNTesseractOcr.startOcr(imgPath, lang)
+ const tessOptions = {
+  whitelist: null, 
+  blacklist: '1234567890\'!"#$%&/()={}[]+*-_:;<>'
+};
+RNTesseractOcr.recognize(imgPath, lang, tessOptions)
   .then((result) => {
     this.setState({ ocrResult: result });
     console.log("OCR Result: ", result);
@@ -67,6 +76,9 @@ RNTesseractOcr.startOcr(imgPath, lang)
   .done();
 
 ```
+
+*NOTE: The method _startOcr_ is deprecated. Instead, use _recognize_*
+
 
 ### Supported languages
   - LANG_AFRIKAANS
@@ -120,7 +132,7 @@ RNTesseractOcr.startOcr(imgPath, lang)
 Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-native-tesseract-ocr/tree/master/tesseractOcrSample):
 - `git clone git@github.com:jonathanpalma/react-native-tesseract-ocr.git`
 - `cd react-native-tesseract-ocr/tesseractOcrSample/`
-- `npm install` 
+- `npm install` or `yarn`
 
 *NOTE: Don't forget to ...*
 - *add [v3.04 trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) to the appropriate folder*

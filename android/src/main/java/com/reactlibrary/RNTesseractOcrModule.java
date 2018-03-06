@@ -253,6 +253,7 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
 		} while (it.next(level));
 
 		it.delete();
+		tessBaseApi.end();
 
 		return words;
 	}

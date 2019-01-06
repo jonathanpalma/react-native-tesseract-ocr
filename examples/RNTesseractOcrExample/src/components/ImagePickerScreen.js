@@ -9,6 +9,7 @@ import {
   View
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import RNTesseractOcr from 'react-native-tesseract-ocr';
 import styles from '../../styles';
 
 const Button = (Platform.OS === 'android') ? TouchableNativeFeedback : TouchableOpacity;
@@ -20,12 +21,17 @@ const imagePickerOptions = {
     skipBackup: true,
   },
 };
+const tessOptions = {
+  whitelist: null,
+  blacklist: null
+};
 
 class ImagePickerScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       errorMessage: null,
+      extractedText: null,
       hasErrored: false,
       imageSource: null,
       isLoading: false,
@@ -43,13 +49,23 @@ class ImagePickerScreen extends Component {
         this.setState({ isLoading: false, hasErrored: true, errorMessage: response.error });
       } else {
         const source = { uri: response.uri };
-        this.setState({ imageSource: source, hasErrored: false, errorMessage: null });
+        this.setState({ imageSource: source, hasErrored: false, errorMessage: null }, this.extractTextFromImage(response.path));
       }
     });
   }
 
+  extractTextFromImage(imagePath) {
+    RNTesseractOcr.recognize(imagePath, 'LANG_ENGLISH', tessOptions)
+      .then((result) => {
+        this.setState({ isLoading: false, extractedText: result });
+      })
+      .catch((err) => {
+        this.setState({ hasErrored: true, errorMessage: err.message });
+      });
+  }
+
   render() {
-    const { imageSource, isLoading } = this.state;
+    const { errorMessage, extractedText, hasErrored, imageSource, isLoading } = this.state;
     return (
       <View style={styles.container}>
         <Button onPress={this.selectImage} >
@@ -61,11 +77,15 @@ class ImagePickerScreen extends Component {
             }
           </View>
         </Button>
-
         {
-          isLoading && <ActivityIndicator size="large" />
+          isLoading
+            ? <ActivityIndicator size="large" />
+            : (
+              hasErrored
+                ? <Text>{errorMessage}</Text>
+                : <Text>{extractedText}</Text>
+            )
         }
-
       </View>
     );
   }

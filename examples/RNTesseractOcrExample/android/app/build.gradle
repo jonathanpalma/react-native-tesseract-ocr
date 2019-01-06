@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-tesseract-ocr')
     implementation project(':react-native-image-picker')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])

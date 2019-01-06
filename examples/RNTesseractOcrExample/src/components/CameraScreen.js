@@ -8,4 +8,8 @@ const CameraScreen = () => (
   </View>
 );
 
+CameraScreen.navigationOptions = {
+  title: 'Camera Example',
+};
+
 export default CameraScreen;

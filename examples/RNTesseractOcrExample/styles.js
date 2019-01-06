@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { PixelRatio, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   button: {
@@ -22,6 +22,20 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
   },
+  imageContainer: {
+    borderColor: '#9B9B9B',
+    borderWidth: 1 / PixelRatio.get(),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20
+  },
+  image: {
+    width: 150,
+    height: 150,
+  },
+  rounded: {
+    borderRadius: 75,
+  }
 });
 
 export default styles;

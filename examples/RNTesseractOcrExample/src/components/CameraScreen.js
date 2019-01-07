@@ -5,6 +5,9 @@ import styles from '../../styles';
 const CameraScreen = () => (
   <View style={styles.container}>
     <Text style={styles.title}>Camera Example</Text>
+    <Text style={styles.instructions}>
+      This example has not been implemented yet!
+    </Text>
   </View>
 );
 

@@ -63,7 +63,7 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
                         @Override
                         public void onProgressValues(TessBaseAPI.ProgressValues progressValues) {
                             Log.d("progress " + progressValues.getPercent().toString());
-                            callback(progressValues.getPercent());
+                            callback.invoke(progressValues.getPercent());
                         }
                     });
                     tesseract.init(DATA_PATH, lang);

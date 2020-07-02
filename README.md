@@ -48,13 +48,6 @@ This is a `commitizen friendly` repository, so instead of creating commits using
 
 `$ npm run cz`
 
-#### Formatting & Linting
-
-Make sure you have installed the following plugins on your Code Editor
-
-- [ESLint][url-eslint]
-- [Prettier][url-prettier]
-
 ## License
 
 MIT © [jonathanpalma](https://github.com/jonathanpalma)

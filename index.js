@@ -1,6 +1,5 @@
-
 import { NativeModules } from 'react-native';
 
-const { RNTesseractOcr } = NativeModules;
+const { TesseractOcr } = NativeModules;
 
-export default RNTesseractOcr;
+export default TesseractOcr;

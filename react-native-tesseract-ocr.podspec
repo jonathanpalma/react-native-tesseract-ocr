@@ -4,11 +4,9 @@ package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 
 Pod::Spec.new do |s|
   s.name         = "react-native-tesseract-ocr"
-  s.version      = package["2.0.0"]
-  s.summary      = package["Tesseract OCR wrapper for React Native"]
-  s.description  = <<-DESC
-                  react-native-tesseract-ocr
-                   DESC
+  s.version      = package["version"]
+  s.summary      = package["description"]
+  s.description  = package["description"]
   s.homepage     = "https://github.com/jonathanpalma/react-native-tesseract-ocr"
   # brief license entry:
   s.license      = "MIT"

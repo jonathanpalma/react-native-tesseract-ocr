@@ -9,19 +9,20 @@ declare module "react-native-tesseract-ocr" {
     | "bul"
     | "chi_sim"
     | "chi_tra"
-    | "hrv"
     | "custom"
     | "dan"
+    | "deu"
     | "eng"
     | "est"
+    | "fas"
     | "fra"
-    | "glg"
-    | "deu"
-    | "heb"
-    | "hun"
-    | "isl"
-    | "ind"
     | "gle"
+    | "glg"
+    | "heb"
+    | "hrv"
+    | "hun"
+    | "ind"
+    | "isl"
     | "ita"
     | "jpn"
     | "kor"
@@ -29,13 +30,12 @@ declare module "react-native-tesseract-ocr" {
     | "lit"
     | "nep"
     | "nor"
-    | "fas"
     | "pol"
     | "por"
     | "rus"
-    | "srp"
     | "slk"
     | "spa"
+    | "srp"
     | "swe"
     | "tur"
     | "ukr"
@@ -49,7 +49,7 @@ declare module "react-native-tesseract-ocr" {
   export interface ITesseractOcrModule {
     clear(): void;
     recognize(path: string, lang: Lang, options?: Options): Promise<string>;
-    stop(): void;
+    stop(): Promise<string>;
   }
 
   const TesseractOcr: ITesseractOcrModule;

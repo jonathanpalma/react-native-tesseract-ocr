@@ -21,7 +21,7 @@ This project uses:
 - [tess-two][url-tess-and] for Android
 - [Tesseract-OCR-iOS][url-tess-ios] for iOS ⚠️ (This has NOT been implemented yet) ⚠️
 
-NOTE: It is recommended to use react-native => 0.60.0
+NOTE: It is recommended to use react-native >= 0.60.0
 
 ## Getting started
 

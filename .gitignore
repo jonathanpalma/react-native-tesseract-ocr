@@ -39,6 +39,9 @@ local.properties
 .project
 .settings/
 
+# Module's android/gradle
+android/gradle*
+
 # BUCK
 buck-out/
 \.buckd/

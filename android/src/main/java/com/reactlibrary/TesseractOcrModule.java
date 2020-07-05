@@ -50,7 +50,7 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void stop(Promise promise) {
         Log.d(getName(), "stop");
-        
+
         try {
             tesseract.stop();
             tesseract.end();

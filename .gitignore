@@ -46,3 +46,6 @@ android/gradle*
 buck-out/
 \.buckd/
 *.keystore
+
+# Tesseract
+*.traineddata

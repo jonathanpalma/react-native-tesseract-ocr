@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "android:reverse": "adb reverse tcp:8081 tcp:8081",
+    "android:dev": "yarn run android:reverse && yarn run android",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -10,8 +12,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/art": "^1.2.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-image-crop-picker": "^0.32.2",
+    "react-native-progress": "^4.0.3",
     "react-native-tesseract-ocr": "link:../"
   },
   "devDependencies": {

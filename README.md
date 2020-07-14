@@ -12,6 +12,14 @@
 [![Commitizen friendly][cz-badge]][cz]
 [![MIT License][license-badge]][license]
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/v2/example/showcase.ios.gif" alt="Showcase Android using Picker" width="215" height="430" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/v2/example/showcase.android.gif" alt="Showcase Android using Camera" width="215" height="430" />
+</div>
+
+
+
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]

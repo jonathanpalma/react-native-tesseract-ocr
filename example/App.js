@@ -50,7 +50,9 @@ function App() {
       setImgSrc({uri: image.path});
       await recognizeTextFromImage(image.path);
     } catch (err) {
-      console.error(err);
+      if (err.message !== 'User cancelled image selection') {
+        console.error(err);
+      }
     }
   };
 
@@ -60,7 +62,9 @@ function App() {
       setImgSrc({uri: image.path});
       await recognizeTextFromImage(image.path);
     } catch (err) {
-      console.error(err);
+      if (err.message !== 'User cancelled image selection') {
+        console.error(err);
+      }
     }
   };
 

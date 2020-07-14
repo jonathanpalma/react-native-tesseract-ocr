@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "jrunestone",
+      "name": "Johan Runsten",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2293001?v=4",
+      "profile": "https://github.com/jrunestone",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "react-native-tesseract-ocr",
+  "projectOwner": "jonathanpalma",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

@@ -3,6 +3,11 @@
   <p>
   react-native-tesseract-ocr is a react-native wrapper for <a href="https://github.com/tesseract-ocr">Tesseract OCR</a>
   </p>
+
+  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/v2/example/showcase.android.picker.gif" alt="Showcase Android using Picker" width="215" height="430" />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/v2/example//showcase.android.camera.gif" alt="Showcase Android using Camera" width="215" height="430" />
+
 </div>
 
 [![Version][version-badge]][package]
@@ -11,14 +16,6 @@
 [![PRs Welcome][prs-badge]][prs]
 [![Commitizen friendly][cz-badge]][cz]
 [![MIT License][license-badge]][license]
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/v2/example/showcase.android.picker.gif" alt="Showcase Android using Picker" width="215" height="430" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/v2/example//showcase.android.camera.gif" alt="Showcase Android using Camera" width="215" height="430" />
-</div>
-
-
 
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]

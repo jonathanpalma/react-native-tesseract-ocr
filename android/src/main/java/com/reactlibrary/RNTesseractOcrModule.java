@@ -3,6 +3,7 @@ package com.reactlibrary;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -13,8 +14,13 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.WritableNativeArray;
+import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.common.annotations.VisibleForTesting;
 
+import com.googlecode.tesseract.android.ResultIterator;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
@@ -174,7 +180,31 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
 			String result = extractText(bitmap, lang, tessOptions);
 
 			promise.resolve(result);
+		} catch (Exception e) {
+			Log.e(REACT_CLASS, e.getMessage());
+			promise.reject("An error occurred", e.getMessage());
+		}
+	}
 
+	@ReactMethod
+	public void recognizeWithBounds(String path, String lang, @Nullable ReadableMap tessOptions, Promise promise) {
+		prepareTesseract();
+
+		Log.d(REACT_CLASS, "Start ocr images with bounds");
+
+		try {
+			BitmapFactory.Options options = new BitmapFactory.Options();
+
+			// TODO:
+			// Check image size before use inSampleSize (maybe this could help) --> https://goo.gl/4MvBvB
+			// considering that when inSampleSize is used (usually to save memory) the ocr quality decreases
+
+			//options.inSampleSize = 4; //inSampleSize documentation --> http://goo.gl/KRrlvi
+			Bitmap bitmap = BitmapFactory.decodeFile(path, options);
+
+			WritableArray result = extractTextWithBounds(bitmap, lang, TessBaseAPI.PageIteratorLevel.RIL_WORD, tessOptions);
+
+			promise.resolve(result);
 		} catch (Exception e) {
 			Log.e(REACT_CLASS, e.getMessage());
 			promise.reject("An error occurred", e.getMessage());
@@ -182,6 +212,53 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
 	}
 
 	private String extractText(Bitmap bitmap, String lang, @Nullable final ReadableMap tessOptions) {
+		createTesseractApi(lang, tessOptions);
+
+		tessBaseApi.setImage(bitmap);
+
+		String extractedText = "Empty result";
+		try {
+			extractedText = tessBaseApi.getUTF8Text();
+		} catch (Exception e) {
+			Log.e(REACT_CLASS, "Error in recognizing text: " + e.getMessage());
+		}
+
+		tessBaseApi.end();
+
+		return extractedText;
+	}
+
+	private WritableArray extractTextWithBounds(Bitmap bitmap, String lang, int level, @Nullable final ReadableMap tessOptions) {
+		createTesseractApi(lang, tessOptions);
+
+		tessBaseApi.setImage(bitmap);
+		tessBaseApi.getUTF8Text();
+
+		WritableArray words = new WritableNativeArray();
+		ResultIterator it = tessBaseApi.getResultIterator();
+		it.begin();
+
+		do {
+			String word = it.getUTF8Text(level);
+			Rect region = it.getBoundingRect(level);
+			WritableMap map = new WritableNativeMap();
+
+			map.putString("text", word);
+			map.putInt("x1", region.left);
+			map.putInt("y1", region.top);
+			map.putInt("x2", region.right);
+			map.putInt("y2", region.bottom);
+
+			words.pushMap(map);
+		} while (it.next(level));
+
+		it.delete();
+		tessBaseApi.end();
+
+		return words;
+	}
+
+	private void createTesseractApi(String lang, @Nullable final ReadableMap tessOptions) {
 		try {
 			tessBaseApi = new TessBaseAPI();
 		} catch (Exception e) {
@@ -211,19 +288,6 @@ public class RNTesseractOcrModule extends ReactContextBaseJavaModule {
 		}
 
 		Log.d(REACT_CLASS, "Training file loaded");
-
-		tessBaseApi.setImage(bitmap);
-
-		String extractedText = "Empty result";
-		try {
-			extractedText = tessBaseApi.getUTF8Text();
-		} catch (Exception e) {
-			Log.e(REACT_CLASS, "Error in recognizing text: " + e.getMessage());
-		}
-
-		tessBaseApi.end();
-
-		return extractedText;
 	}
 
 	private void prepareDirectory(String path) {

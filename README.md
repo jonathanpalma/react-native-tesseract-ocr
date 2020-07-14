@@ -6,11 +6,11 @@ react-native-tesseract-ocr is a react-native wrapper for [Tesseract OCR](https:/
 
 ## Getting started
 
-`$ npm install react-native-tesseract-ocr --save` 
+`$ npm install react-native-tesseract-ocr --save`
 
 or
 
-`$ yarn add react-native-tesseract-ocr` 
+`$ yarn add react-native-tesseract-ocr`
 
 ### Mostly automatic installation
 
@@ -48,13 +48,18 @@ or
   	```
       compile project(':react-native-tesseract-ocr')
   	```
-4. [v3.04 Trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) for a language must be 
+4. [v3.04 Trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) for a language must be
 extracted in `android/app/src/main/assets/tessdata`.
 
 ## Usage
+
+Two methods are provided:
+
+* `recognize` - For single-block text recognition (returns the complete text string)
+* `recognizeWithBounds` - For individual word recognition (returns each word and its bounding box)
+
 ```javascript
 import RNTesseractOcr from 'react-native-tesseract-ocr';
-
 
 /**
  * @param {string} imgPath - The path of the image.
@@ -62,9 +67,11 @@ import RNTesseractOcr from 'react-native-tesseract-ocr';
  * @param {object} tessOptions - Tesseract options.
  */
  const tessOptions = {
-  whitelist: null, 
+  whitelist: null,
   blacklist: '1234567890\'!"#$%&/()={}[]+*-_:;<>'
 };
+
+// performs a recognition and returns all the text in a single string
 RNTesseractOcr.recognize(imgPath, lang, tessOptions)
   .then((result) => {
     this.setState({ ocrResult: result });
@@ -75,9 +82,22 @@ RNTesseractOcr.recognize(imgPath, lang, tessOptions)
   })
   .done();
 
+// performs a recognition and returns an array with all individual words and their respective bounding boxes
+RNTesseractOcr.recognizeWithBounds(imgPath, lang, tessOptions)
+  .then((result) => {
+    this.setState({ ocrResult: result });
+
+    result.forEach((word, i) => {
+        console.log(`OCR Result ${i}: `, word["text"], word["x1"], word["y1"], word["x2"], word["y2"]);
+    });
+  })
+  .catch((err) => {
+    console.log("OCR Error: ", err);
+  })
+  .done();
 ```
 
-*NOTE: The method _startOcr_ is deprecated. Instead, use _recognize_*
+*NOTE: The method _startOcr_ is deprecated. Instead, use _recognize_ or _recognizeWithBounds_*
 
 
 ### Supported languages
@@ -124,11 +144,11 @@ RNTesseractOcr.recognize(imgPath, lang, tessOptions)
 
 ### If you want to use your own trained data file
   - LANG_CUSTOM
- 
+
  *Locate your own trained data file as `custom.traineddata` into `android/app/src/main/assets/tessdata`.*
 
 
-## Example 
+## Example
 Try the included [TesseractOcrSample](https://github.com/jonathanpalma/react-native-tesseract-ocr/tree/master/tesseractOcrSample):
 - `git clone git@github.com:jonathanpalma/react-native-tesseract-ocr.git`
 - `cd react-native-tesseract-ocr/tesseractOcrSample/`
@@ -148,8 +168,8 @@ Check the [project boards](https://github.com/jonathanpalma/react-native-tessera
 Contributions are welcome :raised_hands:
 
 ## License
-This repository is distributed under [MIT license](https://github.com/jonathanpalma/react-native-tesseract-ocr/blob/master/LICENSE) 
+This repository is distributed under [MIT license](https://github.com/jonathanpalma/react-native-tesseract-ocr/blob/master/LICENSE)
  - [Tesseract OCR](https://github.com/tesseract-ocr) - maintained by Google, is distributed under [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0)
  - [tess-two](https://github.com/rmtheis/tess-two) is distributed under [Apache 2.0 license](https://github.com/rmtheis/tess-two/blob/master/COPYING)
  - [Tesseract-OCR-iOS](https://github.com/gali8/Tesseract-OCR-iOS) is distributed under [MIT license](https://github.com/gali8/Tesseract-OCR-iOS/blob/master/LICENSE.md)
- 
+

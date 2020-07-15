@@ -1,6 +1,6 @@
 {
   "name": "react-native-tesseract-ocr",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0",
   "description": "Tesseract OCR wrapper for React Native",
   "main": "index.js",
   "files": [
@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "cz": "git-cz",
+    "release": "standard-version",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -46,7 +47,8 @@
     "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.5",
     "react": "^16.9.0",
-    "react-native": "^0.61.5"
+    "react-native": "^0.61.5",
+    "standard-version": "^8.0.2"
   },
   "dependencies": {
     "projects": "link:../"

@@ -186,8 +186,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/jrunestone"><img src="https://avatars3.githubusercontent.com/u/2293001?v=4" width="100px;" alt=""/><br /><sub><b>Johan Runsten</b></sub></a><br /><a href="https://github.com/jonathanpalma/react-native-tesseract-ocr/commits?author=jrunestone" title="Code">💻</a></td>
     <td align="center"><a href="http://jonathanpalma.me"><img src="https://avatars3.githubusercontent.com/u/12414771?v=4" width="100px;" alt=""/><br /><sub><b>Jonathan Palma</b></sub></a><br /><a href="https://github.com/jonathanpalma/react-native-tesseract-ocr/commits?author=jonathanpalma" title="Code">💻</a> <a href="https://github.com/jonathanpalma/react-native-tesseract-ocr/commits?author=jonathanpalma" title="Documentation">📖</a> <a href="#example-jonathanpalma" title="Examples">💡</a></td>
+    <td align="center"><a href="https://github.com/jrunestone"><img src="https://avatars3.githubusercontent.com/u/2293001?v=4" width="100px;" alt=""/><br /><sub><b>Johan Runsten</b></sub></a><br /><a href="https://github.com/jonathanpalma/react-native-tesseract-ocr/commits?author=jrunestone" title="Code">💻</a></td>
   </tr>
 </table>
 

@@ -13,6 +13,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jonathanpalma",
+      "name": "Jonathan Palma",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12414771?v=4",
+      "profile": "http://jonathanpalma.me",
+      "contributions": [
+        "code",
+        "doc",
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 7,

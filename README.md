@@ -37,12 +37,13 @@ NOTE: It is recommended to use react-native >= 0.60.0
 
 ## Example
 
-The following assets are from the [example][url-example] project
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/master/example/showcase.android.picker.gif" alt="Showcase Android using Picker" width="215" height="430" style="margin: 0px 10px" />
   <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/master/example/showcase.android.camera.gif" alt="Showcase Android using Camera" width="215" height="430" style="margin: 0px 10px" />
 </div>
+
+Check the example by yourself [here][url-example]
 
 ## Usage
 
@@ -140,7 +141,7 @@ This library wouldn't be possible without these amazing projects:
 [github-watch]: https://github.com/jonathanpalma/react-native-tesseract-ocr/watchers
 [github-star-badge]: https://img.shields.io/github/stars/jonathanpalma/react-native-tesseract-ocr.svg?style=social
 [github-star]: https://github.com/jonathanpalma/react-native-tesseract-ocr/stargazers
-[url-example]: https://github.com/jonathanpalma/react-native-tesseract-ocr/example
+[url-example]: https://github.com/jonathanpalma/react-native-tesseract-ocr/tree/master/example
 [url-eslint]: https://eslint.org/
 [url-prettier]: https://prettier.io/
 [url-tesseract]: https://github.com/tesseract-ocr/tesseract

@@ -3,11 +3,6 @@
   <p>
   react-native-tesseract-ocr is a react-native wrapper for <a href="https://github.com/tesseract-ocr">Tesseract OCR</a>
   </p>
-
-  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/v2/example/showcase.android.picker.gif" alt="Showcase Android using Picker" width="215" height="430" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/v2/example//showcase.android.camera.gif" alt="Showcase Android using Camera" width="215" height="430" />
-
 </div>
 
 [![Version][version-badge]][package]
@@ -24,7 +19,6 @@
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
-
 This project uses:
 
 - [tess-two][url-tess-and] for Android
@@ -40,14 +34,64 @@ NOTE: It is recommended to use react-native >= 0.60.0
 
 `$ react-native link react-native-tesseract-ocr`
 
+
+## Example
+
+The following assets are from the [example][url-example] project
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/master/example/showcase.android.picker.gif" alt="Showcase Android using Picker" width="215" height="430" style="margin: 0px 10px" />
+  <img src="https://raw.githubusercontent.com/jonathanpalma/react-native-tesseract-ocr/master/example/showcase.android.camera.gif" alt="Showcase Android using Camera" width="215" height="430" style="margin: 0px 10px" />
+</div>
+
 ## Usage
 
-```javascript
-import TesseractOcr from "react-native-tesseract-ocr";
+### tessOptions
 
-// TODO: Define new example
-TesseractOcr;
+| Property  | Type     | Description                                                                |
+| --------- | -------- | -------------------------------------------------------------------------- |
+| allowlist | `string` | List of characters you want to recognize                                   |
+| denylist  | `string` | List of characters you DON'T want to recognize                             |
+| level     | `Level`  | Level of the tokens of the page hierarchy (only used in `recognizeTokens`) |
+
+_`Level` can be one of the following values 'symbol' | 'block' | 'line' | 'paragraph' | 'word'_
+
+### recognize
+
+```typescript
+import TesseractOcr, { LANG_ENGLISH } from 'react-native-tesseract-ocr';
+
+const tessOptions = {};
+TesseractOcr.recognize(imageSource, LANG_ENGLISH, tessOptions);
 ```
+
+### recognizeTokens
+
+```typescript
+import TesseractOcr, { LANG_ENGLISH, LEVEL_WORD } from 'react-native-tesseract-ocr';
+
+const tessOptions = { level: LEVEL_WORD };
+TesseractOcr.recognizeTokens(imageSource, LANG_ENGLISH, tessOptions);
+```
+
+
+### useEventListener
+
+```typescript
+import React, { useState } from 'react';
+import { useEventListener } from 'react-native-tesseract-ocr';
+
+function App() {
+  const [progress, setProgress] = useState(0);
+  useEventListener('onProgressChange', (p) => {
+    setProgress(p.percent / 100);
+  });
+
+  // return ...
+}
+```
+
+
 
 ## Contributing
 
@@ -56,7 +100,6 @@ TesseractOcr;
 This is a `commitizen friendly` repository, so instead of creating commits using `git commit`, please use our custom CLI by running:
 
 `$ npm run cz`
-
 
 ## Contributors ✨
 
@@ -97,6 +140,7 @@ This library wouldn't be possible without these amazing projects:
 [github-watch]: https://github.com/jonathanpalma/react-native-tesseract-ocr/watchers
 [github-star-badge]: https://img.shields.io/github/stars/jonathanpalma/react-native-tesseract-ocr.svg?style=social
 [github-star]: https://github.com/jonathanpalma/react-native-tesseract-ocr/stargazers
+[url-example]: https://github.com/jonathanpalma/react-native-tesseract-ocr/example
 [url-eslint]: https://eslint.org/
 [url-prettier]: https://prettier.io/
 [url-tesseract]: https://github.com/tesseract-ocr/tesseract

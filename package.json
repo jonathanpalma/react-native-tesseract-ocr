@@ -1,25 +1,64 @@
-
 {
   "name": "react-native-tesseract-ocr",
-  "version": "1.0.10",
+  "version": "2.0.0-alpha.0",
   "description": "Tesseract OCR wrapper for React Native",
   "main": "index.js",
+  "files": [
+    "README.md",
+    "android",
+    "index.js",
+    "ios",
+    "react-native-tesseract-ocr.podspec"
+  ],
   "scripts": {
+    "cz": "git-cz",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathanpalma/react-native-tesseract-ocr.git",
+    "baseUrl": "https://github.com/jonathanpalma/react-native-tesseract-ocr"
+  },
+  "bugs": {
+    "url": "https://github.com/jonathanpalma/react-native-tesseract-ocr/issues"
   },
   "keywords": [
     "react-native",
     "tesseract ocr",
     "optical character recognition",
-    "cognitive services"
+    "cognitive services",
+    "text recognizer"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:jonathanpalma/react-native-tesseract-ocr.git"
+  "author": {
+    "name": "Jonathan Palma",
+    "email": "jonathanpalma.me@gmail.com"
   },
-  "bugs": {
-    "url": "https://github.com/jonathanpalma/react-native-tesseract-ocr/issues"
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.60.0-rc.0 <1.0.x"
   },
-  "author": "Jonathan Palma <jonathanpalma.me@gmail.com> (http://jonathanpalma.me)",
-  "license": "MIT"
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "cz-conventional-changelog": "^3.1.0",
+    "husky": "^4.2.5",
+    "react": "^16.9.0",
+    "react-native": "^0.61.5"
+  },
+  "dependencies": {
+    "projects": "link:../"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

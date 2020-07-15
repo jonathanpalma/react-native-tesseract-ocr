@@ -40,6 +40,11 @@ declare module "react-native-tesseract-ocr" {
   export const LANG_TURKISH = "tur";
   export const LANG_UKRAINIAN = "ukr";
   export const LANG_VIETNAMESE = "vie";
+  export const LEVEL_BLOCK = "block";
+  export const LEVEL_LINE = "line";
+  export const LEVEL_PARAGRAPH = "paragraph";
+  export const LEVEL_SYMBOL = "symbol";
+  export const LEVEL_WORD = "word";
 
   export type Lang =
     | typeof LANG_AFRIKAANS
@@ -84,15 +89,45 @@ declare module "react-native-tesseract-ocr" {
     | typeof LANG_UKRAINIAN
     | typeof LANG_VIETNAMESE;
 
+  export type Level =
+    | typeof LEVEL_BLOCK
+    | typeof LEVEL_LINE
+    | typeof LEVEL_PARAGRAPH
+    | typeof LEVEL_SYMBOL
+    | typeof LEVEL_WORD;
+
   export type Options = {
     allowlist?: string;
     denylist?: string;
+    level?: Level; // only required for recognizeTokens
+  };
+
+  export type Bounding = {
+    bottom: number;
+    left: number;
+    right: number;
+    top: number;
+  };
+
+  export type Token = {
+    token: string;
+    confidence: number;
+    bounding: Bounding;
   };
 
   export interface ITesseractOcrModule {
     clear(): void;
-    recognize(imageSource: string, lang: Lang, options?: Options): Promise<string>;
-    stop(): Promise<string>;
+    recognize(
+      imageSource: string,
+      lang: Lang,
+      options?: Options
+    ): Promise<string>;
+    recognizeTokens(
+      imageSource: string,
+      lang: Lang,
+      options?: Options
+    ): Promise<string>;
+    stop(): Promise<Token[]>;
   }
 
   export type ProgressData = {

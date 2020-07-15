@@ -42,6 +42,11 @@ export const LANG_SWEDISH = "swe";
 export const LANG_TURKISH = "tur";
 export const LANG_UKRAINIAN = "ukr";
 export const LANG_VIETNAMESE = "vie";
+export const LEVEL_BLOCK = "block";
+export const LEVEL_LINE = "line";
+export const LEVEL_PARAGRAPH = "paragraph";
+export const LEVEL_SYMBOL = "symbol";
+export const LEVEL_WORD = "word";
 
 export function useEventListener(eventType, listener) {
   useEffect(() => {

@@ -2,6 +2,7 @@ package com.reactlibrary;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.os.Environment;
 import android.util.Log;
 
@@ -12,10 +13,11 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.googlecode.tesseract.android.ResultIterator;
 import com.googlecode.tesseract.android.TessBaseAPI;
 
 import java.io.File;
@@ -29,6 +31,7 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private static final String KEY_ALLOW_LIST = "allowlist";
     private static final String KEY_DENY_LIST = "denylist";
+    private static final String KEY_TOKEN_LEVEL = "level";
     private static final String TESS_FILES_DIRECTORY = "tessdata";
     private static final String TESS_FILES_EXTENSION = ".traineddata";
     private static String DATA_PATH = Environment.getExternalStorageDirectory().toString();
@@ -68,32 +71,18 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
         Log.d(getName(), "recognize");
 
         try {
-            String path = imageSource.startsWith("file://") ? imageSource.replace("file://", "") : imageSource;
-
             if (shouldCopyTrainedFile(lang)) {
                 prepareTrainedFilesDirectory();
                 copyTrainedFile(lang);
             }
 
-            if (path.startsWith("http://") || path.startsWith("https://")) {
-                // TODO: support remote files
-                throw new Exception("Cannot select remote files");
-            }
-
-            final BitmapFactory.Options options = new BitmapFactory.Options();
-            final Bitmap bitmap = BitmapFactory.decodeFile(path, options);
+            final Bitmap bitmap = getBitmap(imageSource);
 
             if (bitmap != null) {
                 new Thread() {
                     @Override
                     public void run() {
-                        tesseract = new TessBaseAPI(new TessBaseAPI.ProgressNotifier() {
-                            @Override
-                            public void onProgressValues(TessBaseAPI.ProgressValues progressValues) {
-                                Log.d(getName(), "progress " + String.valueOf(progressValues.getPercent()));
-                                onProgress(progressValues.getPercent());
-                            }
-                        });
+                        tesseract = new TessBaseAPI(createProgressNotifier());
                         tesseract.init(DATA_PATH + File.separator, lang);
                         tesseract.setImage(bitmap);
                         tesseract.getHOCRText(0);
@@ -117,11 +106,111 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void recognizeTokens(String imageSource, final String lang, @Nullable ReadableMap tessOptions, final Promise promise) {
+        Log.d(getName(), "recognizeTokens");
+
+        try {
+            if (shouldCopyTrainedFile(lang)) {
+                prepareTrainedFilesDirectory();
+                copyTrainedFile(lang);
+            }
+
+            final int iteratorLevel = getIteratorLevel(tessOptions != null ? tessOptions.getString(KEY_TOKEN_LEVEL) : "word");
+            final Bitmap bitmap = getBitmap(imageSource);
+
+            if (bitmap != null) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        tesseract = new TessBaseAPI(createProgressNotifier());
+                        tesseract.init(DATA_PATH + File.separator, lang);
+                        tesseract.setImage(bitmap);
+                        tesseract.getHOCRText(0);
+
+                        WritableArray tokens = Arguments.createArray();
+                        WritableMap tempMap;
+                        WritableMap bounding;
+
+                        ResultIterator iterator = tesseract.getResultIterator();
+                        iterator.begin();
+
+                        do {
+                            bounding = Arguments.createMap();
+                            tempMap = Arguments.createMap();
+                            Rect rect = iterator.getBoundingRect(iteratorLevel);
+
+                            bounding.putInt("bottom", rect.bottom);
+                            bounding.putInt("left", rect.left);
+                            bounding.putInt("right", rect.right);
+                            bounding.putInt("top", rect.top);
+
+                            tempMap.putString("token", iterator.getUTF8Text(iteratorLevel));
+                            tempMap.putDouble("confidence", iterator.confidence(iteratorLevel));
+                            tempMap.putMap("bounding", bounding);
+                            tokens.pushMap(tempMap);
+                        } while (iterator.next(iteratorLevel));
+
+                        iterator.delete();
+                        tesseract.end();
+                        promise.resolve(tokens);
+                    }
+
+                }.start();
+            } else {
+                throw new IOException("Could not decode a file path into a bitmap.");
+            }
+        } catch (IOException e) {
+            Log.e(getName(), "Could not access trained files. " + e.toString(), e);
+            promise.reject("Could not access trained files", e.toString());
+        } catch (Exception e) {
+            Log.e(getName(), "Could not recognize text. " + e.toString(), e);
+            promise.reject("Could not recognize text", e.toString());
+        }
+
+    }
+
+    private TessBaseAPI.ProgressNotifier createProgressNotifier() {
+        return new TessBaseAPI.ProgressNotifier() {
+            @Override
+            public void onProgressValues(TessBaseAPI.ProgressValues progressValues) {
+                Log.d(getName(), "progress " + String.valueOf(progressValues.getPercent()));
+                onProgress(progressValues.getPercent());
+            }
+        };
+    }
+
     private void onProgress(int percent) {
         Log.d(getName(), "onProgressChange " + Integer.toString(percent));
         WritableMap payload = Arguments.createMap();
         payload.putInt("percent", percent);
         this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onProgressChange", payload);
+    }
+
+    private int getIteratorLevel(String level) {
+        switch (level) {
+            case "block":
+                return TessBaseAPI.PageIteratorLevel.RIL_BLOCK;
+            case "paragraph":
+                return TessBaseAPI.PageIteratorLevel.RIL_PARA;
+            case "symbol":
+                return TessBaseAPI.PageIteratorLevel.RIL_SYMBOL;
+            case "line":
+                return TessBaseAPI.PageIteratorLevel.RIL_TEXTLINE;
+            default: // word
+                return TessBaseAPI.PageIteratorLevel.RIL_WORD;
+        }
+    }
+
+    private Bitmap getBitmap(String imageSource) throws Exception {
+        String path = imageSource.startsWith("file://") ? imageSource.replace("file://", "") : imageSource;
+
+        if (path.startsWith("http://") || path.startsWith("https://")) {
+            // TODO: support remote files
+            throw new Exception("Cannot select remote files");
+        }
+
+        return BitmapFactory.decodeFile(path, new BitmapFactory.Options());
     }
 
     private boolean shouldCopyTrainedFile(String lang) {

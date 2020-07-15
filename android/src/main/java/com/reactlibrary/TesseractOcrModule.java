@@ -67,7 +67,7 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void recognize(String imageSource, final String lang, @Nullable ReadableMap tessOptions, final Promise promise) {
+    public void recognize(String imageSource, final String lang, @Nullable final ReadableMap tessOptions, final Promise promise) {
         Log.d(getName(), "recognize");
 
         try {
@@ -82,8 +82,7 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
                 new Thread() {
                     @Override
                     public void run() {
-                        tesseract = new TessBaseAPI(createProgressNotifier());
-                        tesseract.init(DATA_PATH + File.separator, lang);
+                        tesseract = createTesseractAPI(lang, tessOptions);
                         tesseract.setImage(bitmap);
                         tesseract.getHOCRText(0);
 
@@ -107,7 +106,7 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void recognizeTokens(String imageSource, final String lang, @Nullable ReadableMap tessOptions, final Promise promise) {
+    public void recognizeTokens(String imageSource, final String lang, @Nullable final ReadableMap tessOptions, final Promise promise) {
         Log.d(getName(), "recognizeTokens");
 
         try {
@@ -123,8 +122,7 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
                 new Thread() {
                     @Override
                     public void run() {
-                        tesseract = new TessBaseAPI(createProgressNotifier());
-                        tesseract.init(DATA_PATH + File.separator, lang);
+                        tesseract = createTesseractAPI(lang, tessOptions);
                         tesseract.setImage(bitmap);
                         tesseract.getHOCRText(0);
 
@@ -168,6 +166,30 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
             promise.reject("Could not recognize text", e.toString());
         }
 
+    }
+
+    private TessBaseAPI createTesseractAPI(String lang, @Nullable final ReadableMap tessOptions) {
+        TessBaseAPI tessBaseAPI = new TessBaseAPI(createProgressNotifier());
+        tessBaseAPI.init(DATA_PATH + File.separator, lang);
+
+        if (tessOptions != null) {
+
+            //  Allow List - List of characters you want to detect
+            if (tessOptions.hasKey(KEY_ALLOW_LIST) && tessOptions.getString(KEY_ALLOW_LIST) != null
+                    && !tessOptions.getString(KEY_ALLOW_LIST).isEmpty()) {
+                Log.d(getName(), KEY_ALLOW_LIST + " " + tessOptions.getString(KEY_ALLOW_LIST));
+                tessBaseAPI.setVariable(TessBaseAPI.VAR_CHAR_WHITELIST, tessOptions.getString(KEY_ALLOW_LIST));
+            }
+
+            //  Deny List - List of characters you DON'T want to detect
+            if (tessOptions.hasKey(KEY_DENY_LIST) && tessOptions.getString(KEY_DENY_LIST) != null
+                    && !tessOptions.getString(KEY_DENY_LIST).isEmpty()) {
+                Log.d(getName(), KEY_DENY_LIST + " " + tessOptions.getString(KEY_DENY_LIST));
+                tessBaseAPI.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST, tessOptions.getString(KEY_DENY_LIST));
+            }
+        }
+
+        return tessBaseAPI;
     }
 
     private TessBaseAPI.ProgressNotifier createProgressNotifier() {

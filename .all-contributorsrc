@@ -6,6 +6,17 @@
   "commit": false,
   "contributors": [
     {
+      "login": "jonathanpalma",
+      "name": "Jonathan Palma",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12414771?v=4",
+      "profile": "http://jonathanpalma.me",
+      "contributions": [
+        "code",
+        "doc",
+        "example"
+      ]
+    },
+    {
       "login": "jrunestone",
       "name": "Johan Runsten",
       "avatar_url": "https://avatars3.githubusercontent.com/u/2293001?v=4",

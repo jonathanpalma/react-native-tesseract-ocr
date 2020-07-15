@@ -16,10 +16,14 @@
 [![PRs Welcome][prs-badge]][prs]
 [![Commitizen friendly][cz-badge]][cz]
 [![MIT License][license-badge]][license]
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
+
 
 This project uses:
 
@@ -30,7 +34,7 @@ NOTE: It is recommended to use react-native >= 0.60.0
 
 ## Getting started
 
-`$ npm install react-native-tesseract-ocr --save`
+`$ npm i react-native-tesseract-ocr --save`
 
 ### Mostly automatic installation
 
@@ -52,6 +56,20 @@ TesseractOcr;
 This is a `commitizen friendly` repository, so instead of creating commits using `git commit`, please use our custom CLI by running:
 
 `$ npm run cz`
+
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/jrunestone"><img src="https://avatars3.githubusercontent.com/u/2293001?v=4" width="100px;" alt=""/><br /><sub><b>Johan Runsten</b></sub></a><br /><a href="https://github.com/jonathanpalma/react-native-tesseract-ocr/commits?author=jrunestone" title="Code">💻</a></td>
+  </tr>
+</table>
 
 ## License
 

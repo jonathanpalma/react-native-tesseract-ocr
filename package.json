@@ -51,7 +51,7 @@
     "standard-version": "^8.0.2"
   },
   "dependencies": {
-    "projects": "link:../"
+    "projects": "file:../"
   },
   "husky": {
     "hooks": {

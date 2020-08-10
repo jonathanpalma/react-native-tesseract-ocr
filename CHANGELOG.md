@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/jonathanpalma/react-native-tesseract-ocr/compare/v2.0.0...v2.0.1) (2020-08-10)
+
+
+### Bug Fixes
+
+* remove npm dependency link ([8e7a539](https://github.com/jonathanpalma/react-native-tesseract-ocr/commit/8e7a53990c52c0c983c3cce5d2d8b45e0395b5ab)), closes [#85](https://github.com/jonathanpalma/react-native-tesseract-ocr/issues/85)
+
 ## 2.0.0 (2020-07-15)
 
 

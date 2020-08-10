@@ -50,9 +50,6 @@
     "react-native": "^0.61.5",
     "standard-version": "^8.0.2"
   },
-  "dependencies": {
-    "projects": "link:../"
-  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"

@@ -73,7 +73,7 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
-    implementation 'com.rmtheis:tess-two:9.1.0'
+    implementation 'cz.adaptech.android:tesseract4android:2.1.1'
 }
 
 def configureReactNativePom(def pom) {

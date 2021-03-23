@@ -125,7 +125,7 @@ MIT © [jonathanpalma](https://github.com/jonathanpalma)
 This library wouldn't be possible without these amazing projects:
 
 - [Tesseract OCR][url-tesseract] - [Apache 2.0 license][url-tesseract-lsc]
-- [tess-two][url-tess-and] - [Apache 2.0 license][url-tess-and-lsc]
+- [Tesseract4Android][url-tess-and] - [Apache 2.0 license][url-tess-and-lsc]
 <!-- - [Tesseract-OCR-iOS][url-tess-ios] - [MIT license][url-tess-ios-lsc] -->
 
 [downloads-badge]: https://img.shields.io/npm/dm/react-native-tesseract-ocr.svg?style=flat-square
@@ -149,8 +149,8 @@ This library wouldn't be possible without these amazing projects:
 [url-prettier]: https://prettier.io/
 [url-tesseract]: https://github.com/tesseract-ocr/tesseract
 [url-tesseract-lsc]: https://github.com/tesseract-ocr/tesseract/blob/master/LICENSE
-[url-tess-and]: https://github.com/rmtheis/tess-two
-[url-tess-and-lsc]: https://github.com/rmtheis/tess-two/blob/master/COPYING
+[url-tess-and]: https://github.com/adaptech-cz/Tesseract4Android
+[url-tess-and-lsc]: https://github.com/adaptech-cz/Tesseract4Android#license
 [url-tess-ios]: https://github.com/gali8/Tesseract-OCR-iOS
 [url-tess-ios-lsc]: https://github.com/gali8/Tesseract-OCR-iOS/blob/master/LICENSE.md
 [twitter]: https://twitter.com/intent/tweet?text=Check%20out%20react-native-tesseract-ocr!%20https://github.com/jonathanpalma/react-native-tesseract-ocr

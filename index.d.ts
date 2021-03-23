@@ -77,6 +77,7 @@ declare module "react-native-tesseract-ocr" {
     | typeof LANG_LATIN
     | typeof LANG_LITHUANIAN
     | typeof LANG_NEPALI
+    | typeof LANG_NEDERLAND
     | typeof LANG_NORWEGIAN
     | typeof LANG_PERSIAN
     | typeof LANG_POLISH

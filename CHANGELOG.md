@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/jonathanpalma/react-native-tesseract-ocr/compare/v2.0.1...v2.0.3) (2021-06-25)
+
+
+### Features
+
+* update event listener api ([cd23498](https://github.com/jonathanpalma/react-native-tesseract-ocr/commit/cd2349857e524cec4a81b64882010daf493a92f5))
+
 ### [2.0.1](https://github.com/jonathanpalma/react-native-tesseract-ocr/compare/v2.0.0...v2.0.1) (2020-08-10)
 
 

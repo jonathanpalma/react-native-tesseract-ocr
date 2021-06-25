@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { NativeModules, DeviceEventEmitter } from "react-native";
 
 export const LANG_AFRIKAANS = "afr";
@@ -50,9 +50,9 @@ export const LEVEL_WORD = "word";
 
 export function useEventListener(eventType, listener) {
   useEffect(() => {
-    DeviceEventEmitter.addListener(eventType, listener);
+    const subscription = DeviceEventEmitter.addListener(eventType, listener);
     return () => {
-      DeviceEventEmitter.removeListener(eventType, listener);
+      subscription.remove();
     };
   });
 }

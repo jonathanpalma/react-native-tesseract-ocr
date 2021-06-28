@@ -28,6 +28,7 @@ declare module "react-native-tesseract-ocr" {
   export const LANG_LATIN = "lat";
   export const LANG_LITHUANIAN = "lit";
   export const LANG_NEPALI = "nep";
+  export const LANG_NEDERLAND = "nld"
   export const LANG_NORWEGIAN = "nor";
   export const LANG_PERSIAN = "fas";
   export const LANG_POLISH = "pol";
@@ -76,6 +77,7 @@ declare module "react-native-tesseract-ocr" {
     | typeof LANG_LATIN
     | typeof LANG_LITHUANIAN
     | typeof LANG_NEPALI
+    | typeof LANG_NEDERLAND
     | typeof LANG_NORWEGIAN
     | typeof LANG_PERSIAN
     | typeof LANG_POLISH

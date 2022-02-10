@@ -41,6 +41,7 @@ public class TesseractOcrModule extends ReactContextBaseJavaModule {
     public TesseractOcrModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
+        this.DATA_PATH = reactContext.getExternalFilesDir(null).getAbsolutePath();
         if (!this.DATA_PATH.contains(reactContext.getPackageName())) {
             this.DATA_PATH += File.separator + reactContext.getPackageName();
         }

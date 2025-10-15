@@ -2,18 +2,29 @@
   "name": "react-native-tesseract-ocr",
   "version": "2.0.3",
   "description": "Tesseract OCR wrapper for React Native",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "source": "src/index.ts",
   "files": [
     "README.md",
     "android",
-    "index.js",
+    "lib",
     "ios",
+    "src",
     "react-native-tesseract-ocr.podspec"
   ],
   "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "typecheck": "tsc --noEmit",
     "cz": "git-cz",
     "release": "standard-version",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -38,17 +49,36 @@
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
   "peerDependencies": {
-    "react": "^16.8.1",
-    "react-native": ">=0.60.0-rc.0 <1.0.x"
+    "react": ">=18.0.0",
+    "react-native": ">=0.74.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "cz-conventional-changelog": "^3.1.0",
-    "husky": "^4.2.5",
-    "react": "^16.9.0",
-    "react-native": "^0.61.5",
-    "standard-version": "^8.0.2"
+    "@commitlint/cli": "^18.4.0",
+    "@commitlint/config-conventional": "^18.4.0",
+    "@react-native/babel-preset": "^0.76.0",
+    "@react-native/codegen": "^0.76.0",
+    "@react-native/eslint-config": "^0.76.0",
+    "@react-native/metro-config": "^0.76.0",
+    "@react-native/typescript-config": "^0.76.0",
+    "@types/react": "^18.2.45",
+    "@types/react-native": "^0.73.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.55.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.1.1",
+    "react": "^18.2.0",
+    "react-native": "^0.76.0",
+    "standard-version": "^9.5.0",
+    "typescript": "^5.3.3",
+    "jest": "^29.7.0",
+    "@testing-library/react-native": "^12.4.2",
+    "@testing-library/jest-native": "^5.4.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
+    "testEnvironment": "node",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
   },
   "husky": {
     "hooks": {

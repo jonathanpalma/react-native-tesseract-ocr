@@ -49,3 +49,17 @@ buck-out/
 
 # Tesseract
 *.traineddata
+
+# Compiled TypeScript
+/lib
+*.d.ts
+
+# Coverage
+coverage/
+
+# ESLint cache
+.eslintcache
+
+# Temporary folders
+tmp/
+temp/

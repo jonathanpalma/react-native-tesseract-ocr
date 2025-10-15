@@ -13,12 +13,12 @@ Pod::Spec.new do |s|
   # optional - use expanded license entry instead:
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.authors      = { "Jonathan Palma" => "jonathanpalma.me@gmail.com" }
-  s.platforms    = { :ios => "9.0" }
+  s.platforms    = { :ios => "12.0" }
   s.source       = { :git => "https://github.com/jonathanpalma/react-native-tesseract-ocr.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,c,m,swift}"
   s.requires_arc = true
 
-  s.dependency "React"
+  s.dependency "React-Core"
 end
 
